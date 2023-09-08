@@ -15,9 +15,12 @@ module.exports = async function (context, req) {
   }
 
   try {
-    const url = `https://www.wirtualnemedia.pl/wyniki/query:${encodeURIComponent(
+    // const url = `https://www.wirtualnemedia.pl/wyniki/query:${encodeURIComponent(
+    //   searchQuery
+    // )}`;
+    const url = `https://www.national-geographic.pl/search/articles?q=${encodeURIComponent(
       searchQuery
-    )}`;
+    )}&tab=articles`;
 
     const response = await axios.get(url);
     const html = response.data;
@@ -26,14 +29,21 @@ module.exports = async function (context, req) {
 
     const articles = [];
 
-    $(".subsite-news-box-item").each((index, element) => {
-      const articleTitle = $(element).find(".news-title").text().trim();
-      const articleLink = $(element).find(".subsite-box").attr("href");
+    $(".col-md-6 ").each((index, element) => {
+      // const articleTitle = $(element).find(".news-title").text().trim();
+      // const articleLink = $(element).find(".subsite-box").attr("href");
+      // const articleDate = $(element).find(".news-date").text();
+      // const articleImg = $(element).find("img").attr("src");
+
+      const articleTitle = $(element).find("h2").text().trim();
+      const articleLink = $(element).find(".type-content-").attr("href");
+      const articleDate = $(element).find(".item-date").text();
       const articleImg = $(element).find("img").attr("src");
 
       articles.push({
         title: articleTitle,
-        link: "https://www.wirtualnemedia.pl" + articleLink,
+        link: "https://www.national-geographic.pl" + articleLink,
+        date: articleDate,
         img: articleImg,
       });
     });

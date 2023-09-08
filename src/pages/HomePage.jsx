@@ -23,14 +23,17 @@ function HomePage() {
   return (
     <div>
       <Form onSearch={handleSearch} />
-      <ul>
+      <ul className="grid grid-cols-2">
         {searchResults.map((article, index) => (
-          <li key={index}>
-            <h2>{article.title}</h2>
-            <a href={article.link} target="_blank" rel="noopener noreferrer">
-              Link do artykułu
-            </a>
+          <li key={index} className="flex p-2">
             <img src={article.img} alt={article.name} />
+            <div>
+              <h2 className="text-xl font-medium">{article.title}</h2>
+              <span className="block text-sm">{article.date}</span>
+              <a href={article.link} target="_blank" rel="noopener noreferrer">
+                Czytaj więcej
+              </a>
+            </div>
           </li>
         ))}
       </ul>

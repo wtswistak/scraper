@@ -16,7 +16,9 @@ function Form({ onSearch }) {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <button type="submit">Szukaj</button>
+      <button type="submit" className="">
+        Szukaj
+      </button>
     </form>
   );
 }
