@@ -6,5 +6,8 @@
 @layer components {
   body {
     font-family: "Roboto", monospace;
+
+    margin: 0 auto;
+    background-color: #ededed;
   }
 }

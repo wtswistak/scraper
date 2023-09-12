@@ -1,16 +1,27 @@
 import axios from "axios";
 import Form from "../components/ui/Form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 function HomePage() {
   const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
+  const { searchQuery } = useParams();
 
-  const handleSearch = async (searchQuery) => {
+  useEffect(() => {
+    if (searchQuery) {
+      fetchData(searchQuery);
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchQuery]);
+
+  const fetchData = async (query) => {
     try {
       const response = await axios.post(
         "http://localhost:7071/api/HttpTrigger",
         {
-          query: searchQuery,
+          query: query,
         }
       );
       const data = response.data;
@@ -20,12 +31,16 @@ function HomePage() {
     }
   };
 
+  const handleSearch = async (newSearchQuery) => {
+    navigate(`/search/${newSearchQuery}`);
+  };
+
   return (
     <div>
       <Form onSearch={handleSearch} />
-      <ul className="grid grid-cols-2">
+      <ul className="grid grid-cols-4 max-w-[1680px] mx-auto">
         {searchResults.map((article, index) => (
-          <li key={index} className="flex p-2">
+          <li key={index} className="flex flex-col p-2">
             <img src={article.img} alt={article.name} />
             <div>
               <h2 className="text-xl font-medium">{article.title}</h2>
