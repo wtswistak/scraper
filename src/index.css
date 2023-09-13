@@ -3,11 +3,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --bg-color: #ededed;
+    --primary-color: #31b688;
+  }
+}
+
 @layer components {
   body {
     font-family: "Roboto", monospace;
     margin: 0 auto;
-    background-color: #ededed;
+    background-color: var(--bg-color);
   }
   .loader {
     width: 45px;

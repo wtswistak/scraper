@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FiSearch } from "react-icons/fi";
 
 function Form({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -9,20 +10,24 @@ function Form({ onSearch }) {
   };
 
   return (
-    <div className="flex justify-center py-20 bg-[#31b688]">
-      <form onSubmit={handleSubmit} className="flex shadow-lg  ">
+    <div className="flex justify-center py-24 bg-[var(--primary-color)]">
+      <form
+        onSubmit={handleSubmit}
+        className="flex shadow-lg rounded-2xl duration-200  "
+      >
         <input
           type="text"
-          placeholder="Wyszukaj artykuł"
+          placeholder="Szukaj artykuły"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="text-xl px-3 py-4  min-w-[500px] rounded-l-md focus-within:outline-none"
+          className="text-lg px-5 py-4 min-w-[500px] rounded-l-2xl border-2 border-[#fff] duration-300 outline-none focus-within:border-[#227f5f]"
+          required
         />
         <button
           type="submit"
-          className="text-xl bg-[#227f5f] px-5  rounded-r-md"
+          className="text-[26px] bg-[#227f5f] px-7 rounded-r-2xl text-[#fff] hover:bg-[#1d6d52] duration-200 "
         >
-          Szukaj
+          <FiSearch />
         </button>
       </form>
     </div>
