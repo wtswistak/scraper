@@ -9,21 +9,23 @@ function Form({ onSearch }) {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex justify-center py-14 bg-[#31b688]"
-    >
-      <input
-        type="text"
-        placeholder="Wyszukaj artykuł..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        className="text-3xl px-3 py-5 mr-3"
-      />
-      <button type="submit" className="text-3xl">
-        Szukaj
-      </button>
-    </form>
+    <div className="flex justify-center py-20 bg-[#31b688]">
+      <form onSubmit={handleSubmit} className="flex shadow-lg  ">
+        <input
+          type="text"
+          placeholder="Wyszukaj artykuł"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="text-xl px-3 py-4  min-w-[500px] rounded-l-md focus-within:outline-none"
+        />
+        <button
+          type="submit"
+          className="text-xl bg-[#227f5f] px-5  rounded-r-md"
+        >
+          Szukaj
+        </button>
+      </form>
+    </div>
   );
 }
 
