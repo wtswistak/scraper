@@ -6,6 +6,7 @@
 @layer base {
   :root {
     --bg-color: #ededed;
+    --bg-card: #e4e4e4;
     --primary-color: #31b688;
     --primary-darker: #227f5f;
   }

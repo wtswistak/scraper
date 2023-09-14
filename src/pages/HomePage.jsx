@@ -31,7 +31,9 @@ function HomePage() {
     <>
       {isLoading && <LoadingLayout />}
       <div>
-        <Form onSearch={handleSearch} />
+        <div className="flex justify-center py-24 bg-[var(--primary-color)] max-sm:py-16">
+          <Form onSearch={handleSearch} />
+        </div>
         <SearchResults
           searchResults={searchResults}
           searchQuery={searchQuery}
