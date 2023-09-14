@@ -1,8 +1,8 @@
 function SearchResults({ searchResults, searchQuery, isLoading }) {
   return (
     <ul className="grid grid-cols-4 max-w-[1680px] mx-auto">
-      {!searchResults.length && searchQuery && !isLoading ? (
-        <p>Brak wyników dla artykułu: {searchQuery}</p>
+      {searchResults.length === 0 && searchQuery ? (
+        <p>Brak wyników dla artykułu:{searchQuery}</p>
       ) : (
         searchResults.map((article, index) => (
           <li key={index} className="flex flex-col p-2">

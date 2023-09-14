@@ -20,12 +20,12 @@ function Form({ onSearch }) {
           placeholder="Szukaj artykuły"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="text-lg px-5 py-4 min-w-[500px] rounded-l-2xl border-2 border-[#fff] duration-300 outline-none focus-within:border-[#227f5f]"
+          className="text-lg px-5 py-4 min-w-[500px] rounded-l-2xl border-2 border-[#fff] duration-300 outline-none focus-within:border-[var(--primary-darker)]"
           required
         />
         <button
           type="submit"
-          className="text-[26px] bg-[#227f5f] px-7 rounded-r-2xl text-[#fff] hover:bg-[#1d6d52] duration-200 "
+          className="text-[26px] bg-[var(--primary-darker)] px-7 rounded-r-2xl text-[#fff] hover:bg-[#1d6d52] duration-200 "
         >
           <FiSearch />
         </button>

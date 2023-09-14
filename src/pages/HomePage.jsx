@@ -14,18 +14,13 @@ function HomePage() {
   useEffect(() => {
     setIsLoading(true);
 
-    if (searchQuery) {
-      fetchArticles(searchQuery)
-        .then((articles) => {
-          setSearchResults(articles);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    } else {
-      setSearchResults([]);
-      setIsLoading(false);
-    }
+    fetchArticles(searchQuery)
+      .then((articles) => {
+        setSearchResults(articles);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [searchQuery]);
 
   const handleSearch = async (newSearchQuery) => {
