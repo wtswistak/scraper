@@ -1,4 +1,5 @@
 import { MdFavoriteBorder } from "react-icons/md";
+import ItemLink from "./ItemLink";
 
 function ResultItem({ article, id }) {
   return (
@@ -16,15 +17,7 @@ function ResultItem({ article, id }) {
           <span className="block text-sm mb-6 ">{article.date}</span>
         </div>
         <div className="flex">
-          <a
-            href={article.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block p-1 w-full text-sm bg-[var(--bg-card)] border-[var(--primary-darker)] border-2 rounded-l-md text-center text-[#000000] font-medium hover:bg-[var(--primary-darker)] hover:text-[#fff] duration-200"
-          >
-            Przejdź do artykułu
-            <span className="text-lg "> &#187;</span>
-          </a>
+          <ItemLink article={article} />
           <button className="text-2xl p-1 px-2 bg-[var(--primary-darker)] border-[var(--primary-darker)] text-[#fff] ml-1 rounded-r-md hover:bg-[#1a624a]  duration-200 ">
             <MdFavoriteBorder />
           </button>
