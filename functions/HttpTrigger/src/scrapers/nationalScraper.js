@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 async function nationalScraper(searchQuery) {
   const url = `https://www.national-geographic.pl/search/articles?q=${encodeURIComponent(
     searchQuery
-  )}&tab=articles`;
+  )}&sort=_score&direction=desc`;
   const resposne = await axios.get(url);
   const html = resposne.data;
   const $ = cheerio.load(html);
@@ -29,4 +29,4 @@ async function nationalScraper(searchQuery) {
   return articles;
 }
 
-module.exports = { nationalScraper };
+module.exports = nationalScraper;

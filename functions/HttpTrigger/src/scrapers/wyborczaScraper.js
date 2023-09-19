@@ -32,4 +32,4 @@ async function wyborczaScraper(searchQuery) {
   return articles;
 }
 
-module.exports = { wyborczaScraper };
+module.exports = wyborczaScraper;
