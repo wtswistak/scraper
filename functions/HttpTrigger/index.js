@@ -4,8 +4,9 @@ const iconv = require("iconv-lite");
 
 module.exports = async function (context, req) {
   const searchQuery = req.query.query || (req.body && req.body.query);
-
+  if (!searchQuery) return;
   try {
+    console.log(searchQuery);
     const urlFirst = `https://www.national-geographic.pl/search/articles?q=${encodeURIComponent(
       searchQuery
     )}&tab=articles`;
@@ -23,6 +24,8 @@ module.exports = async function (context, req) {
       const articleLink = $first(element).find(".type-content-").attr("href");
       const articleDate = $first(element).find(".item-date").text();
       const articleImg = $first(element).find("img").attr("src");
+
+      // if (articleTitle.toLowerCase().includes(searchQuery.toLowerCase())) {
 
       articles.push({
         title: articleTitle,
@@ -52,7 +55,7 @@ module.exports = async function (context, req) {
       articles.push({
         title: articleTitle,
         link: articleLink,
-        date: articleDate,
+        date: articleDate.split("|")[0],
         img: articleImg,
       });
     });
