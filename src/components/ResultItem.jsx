@@ -1,5 +1,5 @@
-import { MdFavoriteBorder } from "react-icons/md";
 import ItemLink from "./ItemLink";
+import ItemBtn from "./ItemBtn";
 
 function ResultItem({ article, id }) {
   return (
@@ -18,9 +18,7 @@ function ResultItem({ article, id }) {
         </div>
         <div className="flex">
           <ItemLink article={article} />
-          <button className="text-2xl p-1 px-2 bg-[var(--primary-darker)] border-[var(--primary-darker)] text-[#fff] ml-1 rounded-r-md hover:bg-[#1a624a]  duration-200 ">
-            <MdFavoriteBorder />
-          </button>
+          <ItemBtn article={article} />
         </div>
       </div>
     </li>
