@@ -8,7 +8,7 @@ function Header() {
         <Link to="/" className="font-semibold">
           HOME
         </Link>
-        <Link to="/liked" className="text-2xl">
+        <Link to="/liked" className="text-2xl p-1">
           <MdFavoriteBorder />
         </Link>
       </header>

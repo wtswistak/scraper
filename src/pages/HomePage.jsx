@@ -12,7 +12,7 @@ function Homepage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setIsLoading(true);
+    if (searchQuery) setIsLoading(true);
 
     fetchArticles(searchQuery)
       .then((articles) => {
