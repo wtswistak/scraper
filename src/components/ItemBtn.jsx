@@ -1,20 +1,23 @@
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ArticleContext } from "../contexts/articleContext";
 
 function ItemBtn({ article }) {
-  const { state, dispatch } = useContext(ArticleContext);
+  const { dispatch } = useContext(ArticleContext);
   const articlesCache = JSON.parse(localStorage.getItem("articles"));
-  const isLikedCache = articlesCache?.some(
-    (item) => item.title === article.title
+  const [isLiked, setIsLiked] = useState(() =>
+    articlesCache?.some((item) => item.title === article.title)
   );
-  const [isLiked, setIsLiked] = useState(isLikedCache ? true : false);
+
+  useEffect(() => {
+    setIsLiked(articlesCache?.some((item) => item.title === article.title));
+  }, [articlesCache, article.title]);
 
   function handleClick() {
     if (!isLiked) dispatch({ type: "add", payload: article });
-    if (isLiked) dispatch({ type: "remove", payload: article });
-    setIsLiked(!isLiked);
+    else dispatch({ type: "remove", payload: article });
   }
+
   return (
     <button
       className="text-2xl p-1 px-2 bg-[var(--primary-darker)] border-[var(--primary-darker)] text-[#fff] ml-1 rounded-r-md hover:bg-[#1a624a] duration-200 "
