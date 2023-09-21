@@ -8,13 +8,14 @@ import LoadingLayout from "../layouts/LoadingLayout";
 function Homepage() {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const { searchQuery } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (searchQuery) setIsLoading(true);
 
-    fetchArticles(searchQuery)
+    fetchArticles(searchQuery, isChecked)
       .then((articles) => {
         setSearchResults(articles);
       })
@@ -22,6 +23,7 @@ function Homepage() {
         setIsLoading(false);
       });
   }, [searchQuery]);
+  console.log(isChecked);
 
   const handleSearch = async (newSearchQuery) => {
     navigate(`/search/${newSearchQuery}`);
@@ -32,7 +34,11 @@ function Homepage() {
       {isLoading && <LoadingLayout />}
       <div>
         <div className="flex justify-center py-24 bg-[var(--primary-color)] max-sm:py-16">
-          <Form onSearch={handleSearch} />
+          <Form
+            onSearch={handleSearch}
+            isChecked={isChecked}
+            setIsChecked={setIsChecked}
+          />
         </div>
 
         {!isLoading && searchQuery && searchResults && (

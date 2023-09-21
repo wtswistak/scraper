@@ -3,13 +3,14 @@ const wyborczaScraper = require("./src/scrapers/wyborczaScraper");
 
 module.exports = async function (context, req) {
   const searchQuery = req.query.query || (req.body && req.body.query);
+  const isChecked = req.isChecked.isChecked || true;
   if (!searchQuery) return;
 
   try {
     const articles = [];
-    const wyborczaArticles = await wyborczaScraper(searchQuery);
-    articles.push(...wyborczaArticles);
-    const nationalArticles = await nationalScraper(searchQuery);
+    // const wyborczaArticles = await wyborczaScraper(searchQuery);
+    // articles.push(...wyborczaArticles);
+    const nationalArticles = await nationalScraper(searchQuery, isChecked);
     articles.push(...nationalArticles);
 
     const data = {
