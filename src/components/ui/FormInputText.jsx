@@ -1,4 +1,4 @@
-function FormInput({ searchQuery, setSearchQuery }) {
+function FormInputText({ searchQuery, setSearchQuery }) {
   return (
     <input
       type="text"
@@ -12,4 +12,4 @@ function FormInput({ searchQuery, setSearchQuery }) {
   );
 }
 
-export default FormInput;
+export default FormInputText;

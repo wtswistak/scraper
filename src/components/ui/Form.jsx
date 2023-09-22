@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import FormInput from "./FormInput";
+import FormInputText from "./FormInputText";
 import FormBtn from "./FormBtn";
+import FormInputCheck from "./FormInputCheck";
 
 function Form({ onSearch, isChecked, setIsChecked }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,20 +15,15 @@ function Form({ onSearch, isChecked, setIsChecked }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="flex shadow-lg rounded-full duration-200 max-sm:w-full mx-3 ">
-        <FormInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+    <form onSubmit={handleSubmit} className="max-sm:w-full">
+      <div className="flex shadow-lg rounded-full duration-200  mx-3 mb-4">
+        <FormInputText
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
         <FormBtn />
       </div>
-      <input
-        type="checkbox"
-        id="filter"
-        checked={isChecked}
-        onChange={handleCheck}
-      />
-      <label htmlFor="filter" className="text-white">
-        Filter
-      </label>
+      <FormInputCheck isChecked={isChecked} handleCheck={handleCheck} />
     </form>
   );
 }

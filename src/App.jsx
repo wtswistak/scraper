@@ -1,7 +1,7 @@
 import React from "react";
 import AppLayout from "./layouts/AppLayout";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Homepage from "./pages/Homepage";
+import HomePage from "./pages/HomePage";
 import { ArticleProvider } from "./contexts/articleContext";
 import LikedPage from "./pages/LikedPage";
 
@@ -11,10 +11,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Homepage />} />
-            <Route path="search/:searchQuery" element={<Homepage />} />
+            <Route index element={<HomePage />} />
+            <Route path="search/:searchQuery" element={<HomePage />} />
             <Route path="liked" element={<LikedPage />} />
-            <Route path="*" element={<Homepage />} />
+            <Route path="*" element={<HomePage />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -18,6 +18,7 @@
     margin: 0 auto;
     background-color: var(--bg-color);
   }
+
   .loader {
     width: 45px;
     aspect-ratio: 0.75;
