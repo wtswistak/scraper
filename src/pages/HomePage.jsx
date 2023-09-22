@@ -5,7 +5,7 @@ import fetchArticles from "../services/fetchArticles";
 import ResultList from "../components/ResultList";
 import LoadingLayout from "../layouts/LoadingLayout";
 
-function Homepage() {
+function HomePage() {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
@@ -52,4 +52,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default HomePage;
