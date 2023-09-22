@@ -3,7 +3,7 @@ const cheerio = require("cheerio");
 const iconv = require("iconv-lite");
 const convertDate = require("../convertDate");
 
-async function wyborczaScraper(searchQuery) {
+async function wyborczaScraper(searchQuery, isChecked) {
   const url = `https://wyborcza.pl/0,91794.html?offset=0&searchType=ARTICLE&query=${encodeURIComponent(
     searchQuery
   )}&orderBy=accuracy`;
@@ -21,13 +21,25 @@ async function wyborczaScraper(searchQuery) {
     const articleImg = $(element).find("img").attr("src");
 
     if (!articleTitle) return;
-
-    articles.push({
-      title: articleTitle,
-      link: articleLink,
-      date: convertDate(articleDate),
-      img: articleImg,
-    });
+    if (
+      isChecked &&
+      articleTitle.toLowerCase().includes(searchQuery.toLowerCase())
+    ) {
+      articles.push({
+        title: articleTitle,
+        link: articleLink,
+        date: convertDate(articleDate),
+        img: articleImg,
+      });
+    }
+    if (!isChecked) {
+      articles.push({
+        title: articleTitle,
+        link: articleLink,
+        date: convertDate(articleDate),
+        img: articleImg,
+      });
+    }
   });
   return articles;
 }

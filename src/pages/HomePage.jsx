@@ -23,7 +23,6 @@ function Homepage() {
         setIsLoading(false);
       });
   }, [searchQuery]);
-  console.log(isChecked);
 
   const handleSearch = async (newSearchQuery) => {
     navigate(`/search/${newSearchQuery}`);

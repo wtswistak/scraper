@@ -9,18 +9,12 @@ async function nationalScraper(searchQuery, isChecked) {
   const html = resposne.data;
   const $ = cheerio.load(html);
   const articles = [];
-  // isChecked = true;
+
   $(".col-md-6 ").each((index, element) => {
     const articleTitle = $(element).find("h2").text().trim();
     const articleLink = $(element).find(".type-content-").attr("href");
     const articleDate = $(element).find(".item-date").text();
     const articleImg = $(element).find("img").attr("src");
-    console.log(isChecked);
-    // if (
-    //   searchFilter &&
-    //   articleTitle.toLowerCase().includes(searchQuery.toLowerCase())
-    // ) {
-    // }
 
     if (
       isChecked &&
@@ -32,8 +26,8 @@ async function nationalScraper(searchQuery, isChecked) {
         date: articleDate,
         img: articleImg,
       });
-    } else if (!isChecked) {
-      // Jeśli searchQuery jest false, dodaj artykuł bez dodatkowej weryfikacji
+    }
+    if (!isChecked) {
       articles.push({
         title: articleTitle,
         link: "https://www.national-geographic.pl" + articleLink,
