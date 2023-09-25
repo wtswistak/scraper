@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import FormInputText from "./FormInputText";
-import FormBtn from "./FormBtn";
-import FormInputCheck from "./FormInputCheck";
 import { InputQueryContext } from "../../contexts/InputQueryContext";
 import { useNavigate } from "react-router-dom";
+import FormBtn from "./FormBtn";
+import FormInputText from "./FormInputText";
+import FormInputCheck from "./FormInputCheck";
 
 function Form({ isChecked, setIsChecked }) {
   const { inputQuery } = useContext(InputQueryContext);

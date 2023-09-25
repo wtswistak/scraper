@@ -1,10 +1,10 @@
 import Form from "../components/ui/Form";
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import { InputQueryContext } from "../contexts/InputQueryContext";
 import fetchArticles from "../services/fetchArticles";
 import ResultList from "../components/ResultList";
 import LoadingLayout from "../layouts/LoadingLayout";
-import { InputQueryContext } from "../contexts/InputQueryContext";
 
 function HomePage() {
   const [searchResults, setSearchResults] = useState([]);

@@ -20,7 +20,6 @@ function articleReducer(state, action) {
       updatedArticles = state.articles.filter(
         (article) => article.title !== action.payload.title
       );
-      console.log(action.payload.title);
       localStorage.setItem("articles", JSON.stringify(updatedArticles));
       return {
         ...state,
