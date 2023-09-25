@@ -1,6 +1,6 @@
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useContext, useState, useEffect } from "react";
-import { ArticleContext } from "../contexts/articleContext";
+import { ArticleContext } from "../contexts/ArticleContext";
 
 function ItemBtn({ article }) {
   const { dispatch } = useContext(ArticleContext);

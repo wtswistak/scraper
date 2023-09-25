@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import FormInputText from "./FormInputText";
 import FormBtn from "./FormBtn";
 import FormInputCheck from "./FormInputCheck";
+import { InputQueryContext } from "../../contexts/InputQueryContext";
+import { useNavigate } from "react-router-dom";
 
-function Form({ onSearch, isChecked, setIsChecked }) {
-  const [searchQuery, setSearchQuery] = useState("");
+function Form({ isChecked, setIsChecked }) {
+  const { inputQuery } = useContext(InputQueryContext);
+  const navigate = useNavigate();
+
+  async function handleSearch(newSearchQuery) {
+    navigate(`/search/${newSearchQuery}`);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
-    onSearch(searchQuery);
+    handleSearch(inputQuery);
   }
   function handleCheck() {
     setIsChecked(!isChecked);
@@ -17,10 +24,7 @@ function Form({ onSearch, isChecked, setIsChecked }) {
   return (
     <form onSubmit={handleSubmit} className="max-sm:w-full">
       <div className="flex shadow-lg rounded-full duration-200  mx-3 mb-4">
-        <FormInputText
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
+        <FormInputText />
         <FormBtn />
       </div>
       <FormInputCheck isChecked={isChecked} handleCheck={handleCheck} />

@@ -1,19 +1,22 @@
 import Form from "../components/ui/Form";
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import fetchArticles from "../services/fetchArticles";
 import ResultList from "../components/ResultList";
 import LoadingLayout from "../layouts/LoadingLayout";
+import { InputQueryContext } from "../contexts/InputQueryContext";
 
 function HomePage() {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const { searchQuery } = useParams();
-  const navigate = useNavigate();
+  const { inputQuery, setInputQuery } = useContext(InputQueryContext);
+  const location = useLocation();
 
   useEffect(() => {
     if (searchQuery) setIsLoading(true);
+    if (location.pathname === "/" && inputQuery !== "") setInputQuery("");
 
     fetchArticles(searchQuery, isChecked)
       .then((articles) => {
@@ -24,20 +27,12 @@ function HomePage() {
       });
   }, [searchQuery]);
 
-  const handleSearch = async (newSearchQuery) => {
-    navigate(`/search/${newSearchQuery}`);
-  };
-
   return (
     <>
       {isLoading && <LoadingLayout />}
       <div>
         <div className="flex justify-center py-24 bg-[var(--primary-color)] max-sm:py-16">
-          <Form
-            onSearch={handleSearch}
-            isChecked={isChecked}
-            setIsChecked={setIsChecked}
-          />
+          <Form isChecked={isChecked} setIsChecked={setIsChecked} />
         </div>
 
         {!isLoading && searchQuery && searchResults && (

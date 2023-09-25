@@ -12,7 +12,7 @@ function FormInputCheck({ isChecked, handleCheck }) {
         htmlFor="filter"
         className="text-[#f3f3f3] mr-3 font-medium text-lg max-sm:text-base "
       >
-        Szukaj dokładnie frazy w tytule
+        Wyszukiwanie dokładne
       </label>
     </div>
   );
