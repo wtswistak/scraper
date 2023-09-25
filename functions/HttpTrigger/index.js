@@ -2,7 +2,7 @@ const nationalScraper = require("./src/scrapers/nationalScraper");
 const wyborczaScraper = require("./src/scrapers/wyborczaScraper");
 
 module.exports = async function (context, req) {
-  const searchQuery = req.query.query || (req.body && req.body.query);
+  const searchQuery = req.body.query;
   const isChecked = req.body.isChecked;
   if (!searchQuery) return;
 
@@ -21,6 +21,7 @@ module.exports = async function (context, req) {
       status: 200,
       headers: {
         "Content-Type": "application/json; charset=utf-8",
+        "Set-Cookie": "myCookie=myValue; SameSite=None; httpOnly",
       },
       body: JSON.stringify(data),
     };
