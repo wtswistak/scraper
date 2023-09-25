@@ -22,6 +22,7 @@ function ItemBtn({ article }) {
     <button
       className="text-2xl p-1 px-2 bg-[var(--primary-darker)] border-[var(--primary-darker)] text-[#fff] ml-1 rounded-r-md hover:bg-[#1a624a] duration-200 "
       onClick={handleClick}
+      title={isLiked ? `Usuń z polubionych` : `Dodaj do polubionych`}
     >
       {isLiked ? <MdFavorite /> : <MdFavoriteBorder />}
     </button>
