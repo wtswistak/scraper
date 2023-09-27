@@ -1,5 +1,5 @@
-const nationalScraper = require("./src/scrapers/nationalScraper");
-const wyborczaScraper = require("./src/scrapers/wyborczaScraper");
+const NationalScraper = require("./src/scrapers/nationalScraper");
+const WyborczaScraper = require("./src/scrapers/wyborczaScraper");
 
 module.exports = async function (context, req) {
   const searchQuery = req.body.query;
@@ -8,9 +8,18 @@ module.exports = async function (context, req) {
 
   try {
     const articles = [];
-    const wyborczaArticles = await wyborczaScraper(searchQuery, isChecked);
+    const wyborczaScraper = new WyborczaScraper();
+    const nationalScraper = new NationalScraper();
+
+    const wyborczaArticles = await wyborczaScraper.scrape(
+      searchQuery,
+      isChecked
+    );
     articles.push(...wyborczaArticles);
-    const nationalArticles = await nationalScraper(searchQuery, isChecked);
+    const nationalArticles = await nationalScraper.scrape(
+      searchQuery,
+      isChecked
+    );
     articles.push(...nationalArticles);
 
     const data = {
