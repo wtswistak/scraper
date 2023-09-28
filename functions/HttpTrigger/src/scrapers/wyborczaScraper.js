@@ -5,10 +5,10 @@ const convertDate = require("../convertDate");
 const ScraperFactory = require("./ScraperFactory");
 
 class NationalScraper extends ScraperFactory {
-  async scrape(searchQuery, isChecked) {
-    const url = `https://wyborcza.pl/0,91794.html?offset=0&searchType=ARTICLE&query=${encodeURIComponent(
+  async scrape(searchQuery, isChecked, page) {
+    const url = `https://wyborcza.pl/0,91794.html?&searchType=ARTICLE&query=${encodeURIComponent(
       searchQuery
-    )}&orderBy=accuracy`;
+    )}&orderBy=accuracy${page > 0 ? `&offset=${page * 20}` : ""}`;
     const response = await axios.get(url, {
       responseType: "arraybuffer",
     });

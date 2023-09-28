@@ -4,6 +4,7 @@ const WyborczaScraper = require("./src/scrapers/wyborczaScraper");
 module.exports = async function (context, req) {
   const searchQuery = req.body.query;
   const isChecked = req.body.isChecked;
+  const page = req.body.page;
   if (!searchQuery) return;
 
   try {
@@ -13,12 +14,14 @@ module.exports = async function (context, req) {
 
     const wyborczaArticles = await wyborczaScraper.scrape(
       searchQuery,
-      isChecked
+      isChecked,
+      page
     );
     articles.push(...wyborczaArticles);
     const nationalArticles = await nationalScraper.scrape(
       searchQuery,
-      isChecked
+      isChecked,
+      page
     );
     articles.push(...nationalArticles);
 

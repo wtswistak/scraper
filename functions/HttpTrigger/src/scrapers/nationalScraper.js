@@ -3,10 +3,10 @@ const cheerio = require("cheerio");
 const ScraperFactory = require("./ScraperFactory");
 
 class NationalScraper extends ScraperFactory {
-  async scrape(searchQuery, isChecked) {
+  async scrape(searchQuery, isChecked, page) {
     const url = `https://www.national-geographic.pl/search/articles?q=${encodeURIComponent(
       searchQuery
-    )}&sort=_score&direction=desc`;
+    )}&sort=_score&direction=desc${page > 0 ? `&page=${++page}` : ""}`;
     const resposne = await axios.get(url);
     const html = resposne.data;
     const $ = cheerio.load(html);
