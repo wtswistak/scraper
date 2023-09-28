@@ -3,8 +3,8 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { InputQueryContext } from "../contexts/InputQueryContext";
 import fetchArticles from "../services/fetchArticles";
-import ResultList from "../components/ResultList";
 import LoadingLayout from "../layouts/LoadingLayout";
+import ResultMain from "../components/results/ResultMain";
 
 function HomePage() {
   const [searchResults, setSearchResults] = useState([]);
@@ -36,11 +36,7 @@ function HomePage() {
         </div>
 
         {!isLoading && searchQuery && searchResults && (
-          <ResultList
-            searchResults={searchResults}
-            searchQuery={searchQuery}
-            isLoading={isLoading}
-          />
+          <ResultMain searchResults={searchResults} searchQuery={searchQuery} />
         )}
       </div>
     </>

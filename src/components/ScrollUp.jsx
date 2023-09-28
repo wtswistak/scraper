@@ -23,8 +23,8 @@ function ScrollUp() {
   return (
     <button onClick={handleClick} title="Przewiń do góry">
       <FiArrowUp
-        size={34}
-        className="fixed bottom-5 text-[var(--bg-color)] font-bold bg-[#19644a] p-1 right-5 rounded-md cursor-pointer hover:bg-[#144936] duration-200  )"
+        size={38}
+        className="fixed bottom-5 text-[var(--bg-color)] font-bold bg-[#124736] p-2 right-5 rounded-3xl cursor-pointer hover:bg-[#0c2e21] duration-200  )"
       ></FiArrowUp>
     </button>
   );

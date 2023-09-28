@@ -1,7 +1,7 @@
 import ItemLink from "./ItemLink";
 import ItemBtn from "./ItemBtn";
 
-function ResultItem({ article, id }) {
+function CardItem({ article, id }) {
   return (
     <li key={id} className="flex flex-col pb-4 bg-[#e4e4e4] rounded-md ">
       <img
@@ -25,4 +25,4 @@ function ResultItem({ article, id }) {
   );
 }
 
-export default ResultItem;
+export default CardItem;
