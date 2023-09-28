@@ -10,13 +10,14 @@ function Form({ isChecked, setIsChecked }) {
   const navigate = useNavigate();
 
   async function handleSearch(newSearchQuery) {
-    navigate(`/search/${newSearchQuery}`);
+    navigate(`/search/${newSearchQuery}?sort=${isChecked}`);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     handleSearch(inputQuery);
   }
+
   function handleCheck() {
     setIsChecked(!isChecked);
   }
