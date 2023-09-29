@@ -2,9 +2,9 @@ const NationalScraper = require("./src/scrapers/nationalScraper");
 const WyborczaScraper = require("./src/scrapers/wyborczaScraper");
 
 module.exports = async function (context, req) {
-  const searchQuery = req.body.query;
-  const isChecked = req.body.isChecked;
-  const page = req.body.page;
+  const searchQuery = req.query.query || (req.body && req.body.query);
+  const isChecked = req.query.isChecked || (req.body && req.body.isChecked);
+  const page = req.query.isChecked || (req.body && req.body.isChecked);
   if (!searchQuery) return;
 
   try {
