@@ -7,7 +7,7 @@ import { ArticleContext } from "../../contexts/ArticleContext";
 import fetchArticles from "../../services/fetchArticles";
 import LoadingLayout from "../../layouts/LoadingLayout";
 
-function HomeMain({ isChecked }) {
+function HomeMain({ isChecked, setIsChecked }) {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [count, setCount] = useState(1);
@@ -18,7 +18,10 @@ function HomeMain({ isChecked }) {
 
   useEffect(() => {
     if (searchQuery) setIsLoading(true);
-    if (location.pathname === "/" && inputQuery !== "") setInputQuery("");
+    if (location.pathname === "/" && inputQuery !== "") {
+      setInputQuery("");
+      setIsChecked(false);
+    }
     setCount(1);
 
     fetchArticles(searchQuery, isChecked)
