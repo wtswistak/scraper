@@ -4,6 +4,7 @@ export const ArticleContext = createContext();
 
 const initialState = {
   articles: JSON.parse(localStorage.getItem("articles")) || [],
+  page: 1,
 };
 
 function articleReducer(state, action) {
@@ -24,6 +25,11 @@ function articleReducer(state, action) {
       return {
         ...state,
         articles: updatedArticles,
+      };
+    case "incrementPage":
+      return {
+        ...state,
+        page: state.page + 1,
       };
     default:
       return state;
