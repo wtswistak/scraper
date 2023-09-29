@@ -1,4 +1,4 @@
-import Form from "../components/ui/Form";
+import Form from "../components/form/Form";
 import { useState } from "react";
 import HomeMain from "../components/results/HomeMain";
 
@@ -10,7 +10,7 @@ function HomePage() {
       <div className="flex justify-center py-24 bg-[var(--primary-color)] max-sm:py-16">
         <Form isChecked={isChecked} setIsChecked={setIsChecked} />
       </div>
-      <HomeMain isChecked={isChecked} />
+      <HomeMain isChecked={isChecked} setIsChecked={setIsChecked} />
     </div>
   );
 }
