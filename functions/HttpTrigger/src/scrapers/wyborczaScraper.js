@@ -43,6 +43,7 @@ class NationalScraper extends ScraperFactory {
         });
       }
     });
+    if (articles.length < 5) return [];
     return articles;
   }
 }
