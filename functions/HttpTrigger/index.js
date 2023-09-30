@@ -3,7 +3,8 @@ const WyborczaScraper = require("./src/scrapers/wyborczaScraper");
 
 module.exports = async function (context, req) {
   const searchQuery = req.query.query || (req.body && req.body.query);
-  const isChecked = req.query.isChecked || (req.body && req.body.isChecked);
+  const isChecked =
+    JSON.parse(req.query.isChecked) || (req.body && req.body.isChecked);
   const page = req.query.page || (req.body && req.body.page);
   if (!searchQuery) return;
 
