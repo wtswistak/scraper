@@ -1,12 +1,12 @@
 import axios from "axios";
 
 async function fetchArticles(query, isChecked, page) {
+  const key = import.meta.env.VITE_KEY;
+
   try {
-    const response = await axios.post("http://localhost:7071/api/HttpTrigger", {
-      query: query,
-      isChecked: isChecked,
-      page: page,
-    });
+    const response = await axios.post(
+      `https://app-scraper.azurewebsites.net/api/HttpTrigger?query=${query}&page=${page}&isChecked=${isChecked}&code=${key}`
+    );
     return response.data.articles;
   } catch (error) {
     console.error("Błąd podczas wysyłania zapytania:", error);
