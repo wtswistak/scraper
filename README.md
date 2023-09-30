@@ -1,11 +1,6 @@
 Aplikacja wyszukująca artykuły o podanej przez użytkownika frazie w serwisach National Geographic, Wyborcza. Aplikacja zwraca listę artykułów wraz z podstawowymi informacjami o nich w tym tytuł, zdjęcie, link do artykułu. Istnieje możliwość wyszukiwania dokładnego po frazie (funkcja includes). Aplikacja umożliwia polubienie artykułów, które są zapisywane w tablicy w pamięci Cache i obejrzenie ich na podstronie. Do parsowania Html wykorzystano bilbiotekę cheerio.
 
-Uruchomienie lokalne aplikacji:
-
-- npm install
-- npm run dev
-- cd .\functions\
-- func start
+live: https://article-scraper.netlify.app/
 
 W aplikacji wykorzystano: React, TailwindCSS, Node, Azure Functions.
 
