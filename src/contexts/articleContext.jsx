@@ -31,6 +31,11 @@ function articleReducer(state, action) {
         ...state,
         page: state.page + 1,
       };
+    case "resetPage":
+      return {
+        ...state,
+        page: 1,
+      };
     default:
       return state;
   }

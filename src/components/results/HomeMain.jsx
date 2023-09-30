@@ -23,6 +23,7 @@ function HomeMain({ isChecked, setIsChecked }) {
       setIsChecked(false);
     }
     setCount(1);
+    dispatch({ type: "resetPage" });
 
     fetchArticles(searchQuery, isChecked)
       .then((articles) => {
